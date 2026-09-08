@@ -16,6 +16,6 @@ Route:: get('/contact',function(){
 })->name('contact');
 
 Route:: get('/contact2',function(){
-    return view('contact2');
+    return view('contact2', ['name' => 'Ximena']);
 })->name('contact2');
 
