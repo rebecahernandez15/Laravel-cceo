@@ -7,7 +7,13 @@ Route::get('/', function () {
 });
 
 Route:: get('/contact',function(){
-    return view('contact', ['name' => 'Rebeca']);
+
+    //return redirect('/contact2',303);
+    return redirect('/contact2',303);
+    return redirect()->route('contact2');
+    return to_route('contact2');
+
+    //return view('contact', ['name' => 'Rebeca']);
 })->name('contact');
 
 Route:: get('/contact2',function(){
