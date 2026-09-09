@@ -14,17 +14,32 @@ class PostController extends Controller
     public function index()
     {
 
-        Post::create(
+        $post = Post::find(2);
+
+
+
+        $post->update(
             [
                 'title' => 'test title',
                 'slug' => 'test slug',
                 'content' => 'test content',
-                'category_id' => 1,
-                'description' => 'test description',
-                'posted' => 'no',
                 'image' => 'test image',
             ]
         );
+
+        //dd($post->);
+
+//        Post::create(
+//            [
+//                'title' => 'test title',
+//                'slug' => 'test slug',
+//                'content' => 'test content',
+//                'category_id' => 1,
+//                'description' => 'test description',
+//                'posted' => 'no',
+//                'image' => 'test image',
+//            ]
+//        );
 
         return 'Index';
     }
