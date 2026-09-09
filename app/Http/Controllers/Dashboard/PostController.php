@@ -13,19 +13,20 @@ class PostController extends Controller
      */
     public function index()
     {
-
+        //dd(Post::all());
         $post = Post::find(2);
+        //$post->delete(2);
 
 
 
-        $post->update(
-            [
-                'title' => 'test title',
-                'slug' => 'test slug',
-                'content' => 'test content',
-                'image' => 'test image',
-            ]
-        );
+//        $post->update(
+//            [
+//                'title' => 'test title',
+//                'slug' => 'test slug',
+//                'content' => 'test content',
+//                'image' => 'test image',
+//            ]
+//        );
 
         //dd($post->);
 
