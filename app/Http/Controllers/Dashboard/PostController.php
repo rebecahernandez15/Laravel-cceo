@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -11,9 +12,9 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Response
     {
-        //dd(Post::all());
+
         $post = Post::find(2);
         //$post->delete(2);
 
