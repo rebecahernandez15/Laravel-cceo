@@ -6,16 +6,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route:: get('/contact',function(){
+Route::get('/test', [\App\Http\Controllers\PrimerControlador::class, 'index']);
+Route::get('otro/{post}/{otro?}', [\App\Http\Controllers\PrimerControlador::class, 'otro']);
+//http://testlara.test/otro/5
 
-    //return redirect('/contact2',303);
-    //return redirect()->route('contact2');
-    //return to_route('contact2');
-
-    return view('contact', ['name' => 'Rebeca']);
-})->name('contact');
-
-Route:: get('/contact2',function(){
-    return view('contact2');
-})->name('contact2');
-
+//Route::resource('post',\App\Http\Controllers\PrimerControlador::class);
+//Route::resource('category',\App\Http\Controllers\PrimerControlador::class);
