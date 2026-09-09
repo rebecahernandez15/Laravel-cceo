@@ -18,7 +18,7 @@ class PostController extends Controller
         $post = Post::find(1);
         $category = Category::find(1);
 
-        dd($category->posts[0]->title);
+//        dd($category->posts[0]->title);
 
 
 
@@ -53,7 +53,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.post.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return 'Store recibido';
     }
 
     /**

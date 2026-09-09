@@ -1,4 +1,4 @@
-@extends('master')
+@extends('dashboard.master')
 
 @section('content')
     <h1>Contact 1</h1>
