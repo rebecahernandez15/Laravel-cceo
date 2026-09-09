@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
@@ -12,11 +13,12 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
+        $post = Post::find(1);
+        $category = Category::find(1);
 
-        $post = Post::find(2);
-        //$post->delete(2);
+        dd($category->posts[0]->title);
 
 
 
