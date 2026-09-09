@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        Header 2
+        Header 1
     </header>
 
     <section>
