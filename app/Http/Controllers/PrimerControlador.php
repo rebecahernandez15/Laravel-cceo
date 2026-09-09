@@ -11,4 +11,9 @@ class PrimerControlador extends Controller
         return view('contact', ['name' => 'Rebeca']);
     }
 
+    function otro($post=40, $otro=50 ){
+        echo $post;
+        echo $otro;
+    }
+
 }
