@@ -50,7 +50,7 @@
                     </td>
                     <td>
                         <a href="{{route('posts.edit',$p)}}">Edit</a>
-                        <a href="{{route('posts.show',$p)}}">Edit</a>
+                        <a href="{{route('posts.show',$p)}}">Show</a>
                     </td>
                 </tr>
             @endforeach
