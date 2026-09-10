@@ -63,7 +63,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        return 'Store recibido';
+        dd(request()->get('title'));
     }
 
     /**
