@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -19,7 +20,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.post.create');
+        $categories = Category::pluck('id','title');
+        //dd($categories);
+
+        return view('dashboard.post.create',compact('categories'));
     }
 
     /**
