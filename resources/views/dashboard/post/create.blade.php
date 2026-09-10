@@ -14,7 +14,9 @@
 
         <label for="category_id">Category</label>
         <select name="category_id" id="category_id">
-            <option value="1">Category 1</option>
+            @foreach($categories as $title => $id)
+                <option value="{{$id}}">{{$title}}</option>
+            @endforeach
         </select>
 
         <label for="description">Description</label>
