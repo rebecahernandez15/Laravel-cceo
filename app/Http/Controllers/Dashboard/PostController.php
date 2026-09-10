@@ -63,7 +63,27 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd(request()->get('title'));
+
+        //dd($request->all());
+
+        Post::create($request->all());
+
+        return to_route('posts.index');
+        //dd(request()->get('title'));
+
+//        Post::create(
+//            [
+//                'title' => $request->all()['title'],
+//                'slug' => $request->all()['slug'],
+//                'content' => $request->all()['content'],
+//                'category_id' => $request->all()['category_id'],
+//                'description' => $request->all()['description'],
+//                //'posted' => $request->all()['posted'],
+//                //'image' => $request-all()['image'],
+//            ]
+//        );
+
+
     }
 
     /**
