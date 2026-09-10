@@ -63,7 +63,7 @@ class PostController extends Controller
         $post = new Post();
 
 
-        return view('dashboard.post.create', compact('categories'));
+        return view('dashboard.post.create', compact('categories', 'post'))->with('task', 'create');
     }
 
     /**
@@ -96,7 +96,7 @@ class PostController extends Controller
 //            'posted' => 'required',
 //        ]);
 
-            //echo 'not';
+        //echo 'not';
 
 
 
@@ -131,7 +131,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::pluck('id', 'title');
-        return view('dashboard.post.edit', compact('post', 'categories'));
+        return view('dashboard.post.edit', compact('post', 'categories'))->with('task', 'edit');
     }
 
     /**
@@ -139,8 +139,17 @@ class PostController extends Controller
      */
     public function update(PutRequest $request, Post $post)
     {
-        dd(public_path('upload/posts'));
-        $post->update($request->validated());
+        $data = $request->validated();
+
+
+        //Image
+        if(isset($data['image'])){
+            $data['image'] = $filename = time().'.'.$data['image']->extension();
+            $request->image->move(public_path('images'), $filename);
+        }
+        //Image
+
+        $post->update($data);
         return to_route('posts.index');
     }
 
@@ -152,3 +161,4 @@ class PostController extends Controller
         //
     }
 }
+
