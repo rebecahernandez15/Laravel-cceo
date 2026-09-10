@@ -139,6 +139,7 @@ class PostController extends Controller
      */
     public function update(PutRequest $request, Post $post)
     {
+        dd(public_path('upload/posts'));
         $post->update($request->validated());
         return to_route('posts.index');
     }
