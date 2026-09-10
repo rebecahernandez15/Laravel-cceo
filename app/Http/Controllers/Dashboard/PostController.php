@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Post\StoreRequest;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Response;
@@ -62,8 +63,11 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
+        Post::create($request->validated());
+
+        return to_route('posts.index');
 
 //        $validate = Validator::make($request->all(),
 //            [
@@ -89,9 +93,7 @@ class PostController extends Controller
             //echo 'not';
 
 
-        Post::create($request->all());
 
-        return to_route('posts.index');
         //dd(request()->get('title'));
 
 //        Post::create(
