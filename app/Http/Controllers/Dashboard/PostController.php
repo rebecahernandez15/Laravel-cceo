@@ -17,9 +17,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = Post::find(1);
-        $category = Category::find(1);
+        $posts=Post::get();
+        return view('dashboard.post.index',compact('posts'));
 
+
+//        $post = Post::find(1);
+//        $category = Category::find(1);
 //        dd($category->posts[0]->title);
 
 
@@ -47,7 +50,7 @@ class PostController extends Controller
 //            ]
 //        );
 
-        return 'Index';
+
     }
 
     /**
