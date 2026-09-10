@@ -9,6 +9,7 @@ use App\Models\Post;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\Post\PutRequest;
 
 class PostController extends Controller
 {
@@ -127,15 +128,17 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $categories = Category::pluck('id', 'title');
+        return view('dashboard.post.edit', compact('post', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(PutRequest $request, Post $post)
     {
-        //
+        $post->update($request->validated());
+        return to_route('posts.index');
     }
 
     /**
