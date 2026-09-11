@@ -8,6 +8,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test/{id?}/{name}', function ($id = 10, $name = 'Rebeca') {
+    echo $id;
+    echo $name;
+});
+
 
 
 Route::group(['prefix'=>'dashboard'],function(){
