@@ -19,7 +19,7 @@ Route::middleware([App\Http\Middleware\TestMiddleware::class])->group(function (
 });
 
 Route::group(['prefix'=>'dashboard'],function(){
-    Route::resource('posts', PostController::class)->except(['show']);
+    Route::resource('posts', PostController::class);//->except(['show']);
 //    Route::resource(name: 'category', controller: CategoryController::class);
 
 //    Route::resources([
