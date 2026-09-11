@@ -114,7 +114,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        //
+        return view('dashboard.post.show', ['post' => $post]);
     }
 
 
@@ -133,7 +133,7 @@ class PostController extends Controller
         //Image
         if(isset($data['image'])){
             $data['image'] = $filename = time().'.'.$data['image']->extension();
-            $request->image->move(public_path('images'), $filename);
+            $request->image->move(public_path('uploads/posts'), $filename);
         }
         //Image
 
