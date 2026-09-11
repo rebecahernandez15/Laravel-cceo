@@ -8,6 +8,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Route::resource('posts', PostController::class);
+//Route::resource(name: 'category', controller: CategoryController::class);
+
 Route::middleware([App\Http\Middleware\TestMiddleware::class])->group(function () {
     Route::get('/test/{id?}/{name?}', function ($id = 10, $name = 'Rebeca') {
     echo $id;
@@ -16,8 +19,13 @@ Route::middleware([App\Http\Middleware\TestMiddleware::class])->group(function (
 });
 
 Route::group(['prefix'=>'dashboard'],function(){
-    Route::resource('posts', PostController::class);
-    Route::resource(name: 'category', controller: CategoryController::class);
+    Route::resource('posts', PostController::class)->except(['show']);
+//    Route::resource(name: 'category', controller: CategoryController::class);
+
+//    Route::resources([
+//        'posts'=> PostController::class,
+//        'category'=> CategoryController::class
+//    ]);
 });
 
 
