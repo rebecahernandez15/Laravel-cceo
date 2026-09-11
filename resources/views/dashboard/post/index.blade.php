@@ -6,32 +6,13 @@
 
     <table>
         <thead>
-            <tr>
-                <td>
-                    Id
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Title
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Posted
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Category
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Options
-                </td>
-            </tr>
-
+        <tr>
+            <td>Id</td>
+            <td>Title</td>
+            <td>Posted</td>
+            <td>Category</td>
+            <td>Options</td>
+        </tr>
         </thead>
         <tbody>
             @foreach($posts as $p)
