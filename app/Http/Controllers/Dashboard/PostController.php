@@ -13,9 +13,7 @@ use App\Http\Requests\Post\PutRequest;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $posts=Post::paginate(2);
@@ -54,9 +52,7 @@ class PostController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         $categories = Category::pluck('id', 'title');
@@ -66,9 +62,7 @@ class PostController extends Controller
         return view('dashboard.post.create', compact('categories', 'post'))->with('task', 'create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(StoreRequest $request)
     {
         Post::create($request->validated());
@@ -117,26 +111,20 @@ class PostController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Post $post)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(Post $post)
     {
         $categories = Category::pluck('id', 'title');
         return view('dashboard.post.edit', compact('post', 'categories'))->with('task', 'edit');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(PutRequest $request, Post $post)
     {
         $data = $request->validated();
@@ -153,12 +141,12 @@ class PostController extends Controller
         return to_route('posts.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return to_route('posts.index');
+
     }
 }
 
