@@ -37,7 +37,8 @@ Route::get('/contacto', function () {
 
 Route::group(['prefix' => 'blog'], function () {
     Route::controller(BlogController::class)->group(function(){
-        Route::get('/', "index");
+        Route::get('/', "index")->name("web.blog.index");
+        Route::get('/{post}', "show")->name("web.blog.show");
     });
 });
 
