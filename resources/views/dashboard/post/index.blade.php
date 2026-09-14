@@ -30,12 +30,12 @@
                     {{$p->category->title}}
                 </td>
                 <td>
-                    <a class="my-2 btn btn-primary" href="{{route('posts.edit',$p)}}">Edit</a>
-                    <a class="my-2 btn btn-primary" href="{{route('posts.show',$p)}}">Show</a>
+                    <a class="mt-2 btn btn-primary" href="{{route('posts.edit',$p)}}">Edit</a>
+                    <a class="mt-2 btn btn-primary" href="{{route('posts.show',$p)}}">Show</a>
                     <form action = "{{route ('posts.destroy', $p)}}" method="post">
                         @method('DELETE')
                         @csrf
-                        <button class="btn btn-danger" type="submit">Delete</button>
+                        <button class=" mt-2 btn btn-danger" type="submit">Delete</button>
                     </form>
                 </td>
             </tr>

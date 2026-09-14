@@ -29,4 +29,4 @@
     <input type="file" name="image">
 @endif
 
-<button type="submit">Send</button>
+<button type="submit" class="btn btn-success mt-3">Send</button>

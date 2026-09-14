@@ -15,8 +15,8 @@
         {{ session('status') }}
     @endif
 
-    <div class="container ">
-        <div class="card card-white mt-4">
+    <div class="container mx-auto">
+        <div class="card card-white mt-4 p-4">
             @yield('content')
         </div>
     </div>
