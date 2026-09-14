@@ -1,12 +1,18 @@
-@extends('dashboard.post.master')
+@extends('dashboard.master')
 
 @section('content')
 
-    @include('dashboard.fragment._errors-form')
-
+    <!-- Aquí adentro va tu formulario tal como lo tienes -->
     <form action="{{ route('categories.store') }}" method="POST">
+        @csrf
 
-        @include('dashboard.category._form')
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
 
+        <label for="slug">Slug</label>
+        <input type="text" name="slug" id="slug">
+
+        <button type="submit">Send</button>
     </form>
+
 @endsection
