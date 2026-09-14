@@ -1,4 +1,4 @@
-@extends('web.layout')
+@extends('web.master')
 
 @section('content')
     <x-web.blog.post.index :posts="$posts">
@@ -14,9 +14,7 @@
             </footer>
         @endslot
 
-        @slot('extra')
-            Extra
-        @endslot
+        @slot('extra', 'Extra')
 
     </x-web.blog.post.index>
 @endsection
