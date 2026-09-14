@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Web\BlogController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,5 +34,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'admin']], funct
 Route::get('/contacto', function () {
     return view('welcome');
 })->name('contacto');
+
+Route::group(['prefix' => 'blog'], function () {
+    Route::controller(BlogController::class)->group(function(){
+        Route::get('/', "index");
+    });
+});
 
 require __DIR__.'/auth.php';
