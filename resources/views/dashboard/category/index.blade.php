@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <a href="{{route('category.create')}}" target="blank">Create</a>
+    <a href="{{route('categories.create')}}" target="blank">Create</a>
 
     <table>
         <thead>
@@ -22,9 +22,9 @@
                         {{$c->title}}
                     </td>
                     <td>
-                        <a href="{{route('category.edit',$c)}}">Edit</a>
-                        <a href="{{route('category.show',$c)}}">Show</a>
-                        <form action = "{{route ('category.destroy', $c)}}" method="post">
+                        <a href="{{route('categories.edit',$c)}}">Edit</a>
+                        <a href="{{route('categories.show',$c)}}">Show</a>
+                        <form action = "{{route ('categories.destroy', $c)}}">
                             @method('DELETE')
                             @csrf
                             <button type="submit">Delete</button>
