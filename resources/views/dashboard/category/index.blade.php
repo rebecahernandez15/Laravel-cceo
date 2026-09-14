@@ -4,7 +4,7 @@
 
     <a href="{{route('categories.create')}}" target="blank">Create</a>
 
-    <table>
+    <table class="table">
         <thead>
         <tr>
             <td>Id</td>
