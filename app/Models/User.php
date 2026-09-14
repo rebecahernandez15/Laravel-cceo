@@ -29,4 +29,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Comprueba si el usuario tiene rol de administrador.
+     */
+    public function isAdmin()
+    {
+        return $this->rol == "admin";
+    }
+    public function isRegular()
+    {
+        return $this->rol == "regular";
+    }
 }
