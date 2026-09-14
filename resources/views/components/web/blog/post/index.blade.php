@@ -1,5 +1,5 @@
-<div>
-    <h1> Listado de Posts</h1>
+
+    {{$slot}}
 
     @foreach ($posts as $p)
 
@@ -13,4 +13,4 @@
 
     @endforeach
 
-</div>
+
