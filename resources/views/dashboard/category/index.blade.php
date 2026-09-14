@@ -2,9 +2,9 @@
 
 @section('content')
 
-    <a class="mt-2 btn btn-success" href="{{ route('category.create') }}">Create</a>
+    <a class="mt-2 btn btn-success" href="{{ route('categories.create') }}">Create</a>
 
-    <table class="table w-full mt-4">
+    <table class="table mb-3">
         <thead>
         <tr>
             <th>Title</th>
@@ -16,9 +16,9 @@
             <tr>
                 <td>{{ $c->title }}</td>
                 <td>
-                    <a class="btn btn-primary mt-2" href="{{ route('category.edit', $c) }}">Edit</a>
-                    <a class="btn btn-primary mt-2" href="{{ route('category.show', $c) }}">Show</a>
-                    <form action="{{ route('category.destroy', $c) }}" method="POST" class="inline">
+                    <a class="btn btn-primary mt-2" href="{{ route('categories.edit', $c) }}">Edit</a>
+                    <a class="btn btn-primary mt-2" href="{{ route('categories.show', $c) }}">Show</a>
+                    <form action="{{ route('categories.destroy', $c) }}" method="POST" class="inline">
                         @method('DELETE')
                         @csrf
                         <button class="btn btn-danger mt-2" type="submit">Delete</button>
