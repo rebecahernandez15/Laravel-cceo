@@ -4,7 +4,7 @@
 
     <a class="btn btn-success my-3" href="{{route('posts.create')}}" target="blank">Create</a>
 
-    <table class="table">
+    <table class="table mb-3">
         <thead>
         <tr>
             <td>Id</td>
