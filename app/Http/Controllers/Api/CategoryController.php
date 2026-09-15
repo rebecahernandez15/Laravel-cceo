@@ -20,9 +20,8 @@ class PostController extends Controller
         return response()->json(Post::get());
     }
 
-    public function slug($slug)
+    public function slug(Post $post)
     {
-        $post = Post::where("slug", $slug)->firstOrFail();
         $post->category;
         return response()->json($post);
     }
