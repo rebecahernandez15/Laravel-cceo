@@ -3,57 +3,49 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
-use App\Http\Requests\Category\StoreRequest;
-use App\Http\Requests\Category\PutRequest;
+use App\Http\Requests\Post\StoreRequest;
+use App\Http\Requests\Post\PutRequest;
 
-class CategoryController extends Controller
+class PostController extends Controller
 {
     public function index()
     {
-        return response()->json(Category::paginate(10));
+        return response()->json(Post::paginate(10));
     }
 
     public function all()
     {
-        return response()->json(Category::get());
+        return response()->json(Post::get());
+    }
+
+    public function slug($slug)
+    {
+        $post = Post::where("slug", $slug)->firstOrFail();
+        $post->category;
+        return response()->json($post);
     }
 
     public function store(StoreRequest $request)
     {
-        return response()->json(Category::create($request->validated()));
+        return response()->json(Post::create($request->validated()));
     }
 
-    public function show(Category $category)
+    public function show(Post $post)
     {
-        return response()->json($category);
+        return response()->json($post);
     }
 
-    public function update(PutRequest $request, Category $category)
+    public function update(PutRequest $request, Post $post)
     {
-        $category->update($request->validated());
-        return response()->json($category);
+        $post->update($request->validated());
+        return response()->json($post);
     }
 
-    public function destroy(Category $category)
+    public function destroy(Post $post)
     {
-        $category->delete();
+        $post->delete();
         return response()->json("ok");
-    }
-
-    public function posts(Category $category)
-    {
-        // $posts = Post::join('categories', "categories.id", "=", "posts.category_id")
-        // ->select("posts.*", "categories.title as category")
-        // ->where("categories.id", $category->id)
-        // ->get();
-
-        $posts = Post::with("category")
-            ->where("category_id", $category->id)
-            ->get();
-
-        return response()->json($posts);
     }
 }
