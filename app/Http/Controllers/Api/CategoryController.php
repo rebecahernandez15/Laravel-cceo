@@ -1,73 +1,59 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\PutRequest;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $categories = Category::paginate(10);
-        return view('dashboard.category.index', compact('categories'));
+        return response()->json(Category::paginate(10));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function all()
     {
-        $category = new Category();
-        return view('dashboard.category.create', compact('category'));
+        return response()->json(Category::get());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreRequest $request)
     {
-        Category::create($request->validated());
-        return to_route('category.index')->with('status', 'Categoría creada con éxito.');
+        return response()->json(Category::create($request->validated()));
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Category $category)
     {
-        return view('dashboard.category.show', compact('category'));
+        return response()->json($category);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Category $category)
-    {
-        return view('dashboard.category.edit', compact('category'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(PutRequest $request, Category $category)
     {
         $category->update($request->validated());
-        return to_route('category.index')->with('status', 'Categoría actualizada con éxito.');
+        return response()->json($category);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Category $category)
     {
         $category->delete();
-        return to_route('category.index')->with('status', 'Categoría eliminada con éxito.');
+        return response()->json("ok");
+    }
+
+    public function posts(Category $category)
+    {
+        // $posts = Post::join('categories', "categories.id", "=", "posts.category_id")
+        // ->select("posts.*", "categories.title as category")
+        // ->where("categories.id", $category->id)
+        // ->get();
+
+        $posts = Post::with("category")
+            ->where("category_id", $category->id)
+            ->get();
+
+        return response()->json($posts);
     }
 }
